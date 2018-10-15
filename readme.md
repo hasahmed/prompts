@@ -222,6 +222,7 @@ Type: `Object`
 
 Object with key/values to inject. Resolved values are deleted from the internal inject object.
 The value can be an array of values in order to provide answers for a question asked multiple times.
+If a value is an instance of `Error` it will simulate the user cancelling/exiting the prompt.
 
 **Example:**
 ```js

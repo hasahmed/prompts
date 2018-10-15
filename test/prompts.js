@@ -41,12 +41,12 @@ test('injects', t => {
   prompt.inject(obj);
   t.same(prompt._map, obj, 'injects key:val object of answers');
 
-  prompt({ name:'a' })
+  prompt({ type: 'text', name:'a', message: 'a message' })
     .then(foo => {
       t.same(foo, { a:1 }, 'immediately returns object with injected answer');
       t.same(prompt._map, { b:2, c:3 }, 'deletes the `a` key from internal map');
-    
-      prompt([{ name:'b' }, { name:'c' }])
+
+      prompt([{ type: 'text', name:'b', message: 'b message' }, { type: 'text', name:'c', message: 'c message' }])
         .then(bar => {
           t.same(bar, { b:2, c:3 }, 'immediately handles two prompts at once');
           t.same(prompt._map, {}, 'leaves behind empty internal mapping when exhausted');
